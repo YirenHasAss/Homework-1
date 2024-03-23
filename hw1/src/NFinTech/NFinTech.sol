@@ -105,7 +105,7 @@ contract NFinTech is IERC721 {
         address owner = ownerOf(tokenId);
         address operate = getApproved(tokenId);
         require(to != address(0));
-        require((msg.sender == owner) || (msg.sender == operate));
+        require((msg.sender == owner) || (msg.sender == operate)|| isApprovedForAll(owner,msg.sender));
         _balances[from]--;
         _balances[to]++;
         _owner[tokenId] = to;
